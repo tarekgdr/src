@@ -72,7 +72,7 @@ def make_api_call(symbols,
         print(
             f"Timestamp: {formatted_date}, Long Liquidation: {l_value}, Short Liquidation: {s_value}"
         )
-        if l_value > 30:
+        if l_value > 300000:
           send_whatsapp_message(formatted_date, "long", l_value)
         elif s_value > 150000:
           send_whatsapp_message(formatted_date, "short", s_value)
