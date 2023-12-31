@@ -6,8 +6,9 @@ from datetime import datetime, timedelta
 from twilio.rest import Client
 
 # Twilio credentials
-account_sid = 'ACc3fdea95870c434343f572fb98d27fad'
-auth_token = '935c2b91b2e6c4b0e227b23da9c01097'
+
+account_sid = os.environ.get("TWILIO_ACCOUNT_SID")
+auth_token = os.environ.get("TWILIO_AUTH_TOKEN")
 
 # Twilio WhatsApp number and recipient number
 whatsapp_number = 'whatsapp:+14155238886'  # Twilio's Sandbox number
