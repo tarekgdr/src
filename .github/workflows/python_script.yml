@@ -1,0 +1,20 @@
+name: Scheduled Python Script
+
+on:
+  schedule:
+    - cron: '*/15 * * * *'  # Schedule to run every 15 minutes
+
+jobs:
+  run_script:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'  # Replace with your Python version
+
+      - name: Run Python Script
+        run: python your_script.py  # Replace with your script's filename
