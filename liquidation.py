@@ -9,7 +9,7 @@ import os
 # Twilio credentials
 
 account_sid = 'ACc3fdea95870c434343f572fb98d27fad'
-auth_token = '935c2b91b2e6c4b0e227b23da9c01097'
+auth_token = 'db4a15ddc094000ac6a1a6ce02e484b9'
 
 # Twilio WhatsApp number and recipient number
 whatsapp_number = 'whatsapp:+14155238886'  # Twilio's Sandbox number
