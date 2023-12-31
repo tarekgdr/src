@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import matplotlib.dates as mdates
 from datetime import datetime, timedelta
 from twilio.rest import Client
+import os
 
 # Twilio credentials
 
