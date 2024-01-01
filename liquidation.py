@@ -8,6 +8,7 @@ import os
 
 
 def send_whatsapp_message(date, type, value):
+  print("sending...")
   bot_token = os.environ.get("BOT_TOKEN")  # TODO: replace with your bot token
   chat_id = '-1002068146668'  # TODO: replace with your bot token
   message_body = f'BTC {type} Liquidation  at {date} is {value}'
