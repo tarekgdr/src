@@ -6,29 +6,16 @@ from datetime import datetime, timedelta
 from twilio.rest import Client
 import os
 
-# Twilio credentials
-
-account_sid = 'ACc3fdea95870c434343f572fb98d27fad'
-auth_token = 'db4a15ddc094000ac6a1a6ce02e484b9'
-
-# Twilio WhatsApp number and recipient number
-whatsapp_number = 'whatsapp:+14155238886'  # Twilio's Sandbox number
-recipient_numbers = ['whatsapp:+4917630179560',
-                     'whatsapp:+491625988345']  # our WhatsApp number
-
 # Initialize Twilio Client
 client = Client(account_sid, auth_token)
 
+bot_token = os.environ.get("BOT_TOKEN")  # TODO: replace with your bot token
+chat_id = '-1002068146668'  # TODO: replace with your bot token
 
 def send_whatsapp_message(date, type, value):
   message_body = f'BTC {type} Liquidation  at {date} is {value}'
-  # Send a WhatsApp message
-  for recipient_number in recipient_numbers:
-    message = client.messages.create(body=message_body,
-                                     from_=whatsapp_number,
-                                     to=recipient_number)
-    print(f"Message sent to {recipient_number}: {message.sid}")
-
+  url = f"https://api.telegram.org/bot%7Bbot_token%7D/sendMessage?chat_id={chat_id}&text={message_body}"
+  requests.get(url)
 
 def make_api_call(symbols,
                   interval,
