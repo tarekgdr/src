@@ -7,14 +7,18 @@ from twilio.rest import Client
 import os
 
 
-def send_whatsapp_message(date, type, value):
-  print("sending...")
-  bot_token = os.environ.get("BOT_TOKEN")  # TODO: replace with your bot token
-  chat_id = '-1002068146668'  # TODO: replace with your bot token
-  message_body = f'BTC {type} Liquidation  at {date} is {value}'
-  url = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={message_body}"
-  requests.get(url)
 
+def send_whatsapp_message(date, type, value):
+    try:
+        bot_token = os.environ.get("BOT_TOKEN")  # TODO: replace with your bot token
+        chat_id = '-1002068146668'  # TODO: replace with your bot token
+        message_body = f'BTC {type} Liquidation at {date} is {value}'
+        url = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={message_body}"
+        response = requests.get(url)
+        response.raise_for_status()  # Raise an error for HTTP errors (4xx and 5xx)
+        return None  # No error occurred
+    except requests.exceptions.RequestException as e:
+        return f"Error sending message: {e}"
 
 def make_api_call(symbols,
                   interval,
