@@ -1,7 +1,7 @@
 import requests
 import csv
 import time
-
+import os
 # Your existing script logic here
 
 # Run for a total of 10 minutes with updates every 1 minute
