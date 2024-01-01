@@ -6,8 +6,7 @@ from datetime import datetime, timedelta
 from twilio.rest import Client
 import os
 
-# Initialize Twilio Client
-client = Client(account_sid, auth_token)
+
 
 bot_token = os.environ.get("BOT_TOKEN")  # TODO: replace with your bot token
 chat_id = '-1002068146668'  # TODO: replace with your bot token
