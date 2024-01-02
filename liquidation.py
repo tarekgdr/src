@@ -12,7 +12,7 @@ def send_whatsapp_message(date, type, value):
     try:
         bot_token = os.environ.get("BOT_TOKEN")  # TODO: replace with your bot token
         chat_id = '-1002068146668'  # TODO: replace with your bot token
-        message_body = f'BTC {type} Liquidation at {date} is {value}'
+        message_body = f'BTC {type} Liquidation at {date} @ {int(value)}'
         url = f"https://api.telegram.org/bot{bot_token}/sendMessage?chat_id={chat_id}&text={message_body}"
         response = requests.get(url)
         response.raise_for_status()  # Raise an error for HTTP errors (4xx and 5xx)
@@ -57,14 +57,14 @@ def make_api_call(symbols,
 
         # Convert Unix timestamp to a readable date
         date_time = datetime.utcfromtimestamp(timestamp)
-        formatted_date = date_time.strftime('%Y-%m-%d %H:%M')
+        formatted_date = date_time.strftime('%m-%d %H:%M')
 
         print(
             f"Timestamp: {formatted_date}, Long Liquidation: {l_value}, Short Liquidation: {s_value}"
         )
-        if l_value > 300:
+        if l_value > 200000:
           send_whatsapp_message(formatted_date, "long", l_value)
-        elif s_value > 1000:
+        elif s_value > 200000:
           send_whatsapp_message(formatted_date, "short", s_value)
     else:
       #print(data)
